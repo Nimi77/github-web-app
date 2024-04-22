@@ -1,68 +1,150 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+body{
+  background-color: #fafafa;
+}
+.custom-list {
+  list-style-type: decimal;
+}
+.h-screen{
+  height:80vh;
+}
+.h-max{
+  height:50vh
+}
+.repo-top{
+  margin-top:2rem;
+}
+.mod-f{
+  -webkit-justify-content:center!important;
+}
+.header{
+  border-radius: 0px;
+  background: #fdfdfd;
+  box-shadow:  1px 2px 12px #dcdcdc,
+               -6px -6px 12px #ffffff;
+}
+.bgcolor{
+  background-color: #fafafa;
+}
+.create-btn{
+  border: none;
+ position: relative;
+ overflow: hidden;
+ z-index: 1;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+.create-btn::before {
+  content: '';
+  width: 0;
+  height: 3.3em;
+  border-radius: 30em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(to right, #060057 0%, #010249 100%);
+  transition: .5s ease;
+  display: block;
+  z-index: -1;
+ }
+ .create-btn:hover::before {
+  width: 100%;
+ }
+ .create-btn:hover{
+   color: #ffffff;
+ }
+ .action-btn{
+   position: relative;
+   background-repeat: no-repeat;
+   cursor: pointer;
+  box-sizing: border-box;
+  color: #fff;
+  border: none;
+  transition: all 0.3s ease-in-out;
+  z-index: 1;
+  overflow: hidden;
+ }
+ .action-btn::before {
+  content: "";
+  background-color: #010249;
+  width: 0;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: width 700ms ease-in-out;
+  display: inline-block;
 }
-a:hover {
-  color: #535bf2;
+.action-btn:hover::before {
+  width: 100%;
 }
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+.search-width{
+  width:25%;
 }
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.css-1oxhx2p {
+  width: 50% !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%);
+  display: flex !important;
+  align-items: center !important;
+  font-family: "Inter", sans-serif;
 }
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+.css-1eramkb{
+  box-sizing: border-box;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+ 
 }
-button:hover {
-  border-color: #646cff;
+.input{
+  background: #f7f7f7;
+  padding: 10px;
+  padding-left: 20px;
+  height: 50px;
+  font-size: 14px;
+  border-radius: 20px;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@media screen and (max-width: 767px) {
+  
+  .error1{
+    font-size: 4rem;
   }
-  a:hover {
-    color: #747bff;
+  .error2{
+    font-size: 2.25rem;
   }
-  button {
-    background-color: #f9f9f9;
+  .heading{
+    font-size: 1.5rem;
+  }
+  
+  .header{
+    font-size: .8rem;
+    padding-inline: 8px;
+    background-color: blueviolet;
+  }
+  .repo-info{
+    font-size: .9rem;
+  }
+
+}
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .sidebar {
+    width: 35%;
+    font-size: 1.3rem;
+  }
+  .name {
+    font-size: 1.1rem;
+  }
+    .button{
+    font-size: 0.7rem;
+  }
+
+  .links{
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: underline;
   }
 }

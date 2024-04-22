@@ -1,35 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+/* eslint-disable no-unused-vars */
+import React from "react";
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import RepoDetailsPage from "./Pages/RepoDetailsPage";
+import RepositoriesPage from "./Pages/RepositoriesPage";
+import ErrorBoundary from "./Pages/ErrorBoundaryPage";
+import NotFoundPage from "./Pages/404ErrorPage";
+import Header from "./Components/Header";
+import "./index.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const username = "Nimi77";
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Router>
+      <div className="flex h-full">
+        <div className=" h-screen flex-1 flex flex-col ">
+          <Header />
+          <div>
+            <Routes>
+              <Route
+                exact
+                path="/"
+                element={<RepositoriesPage username={username} />}
+              />
+              <Route path="/repository/:repoId" element={<RepoDetailsPage />} />
+              <Route path="/404" element={<NotFoundPage />} />
+              <Route
+                path="/error-boundary"
+                element={
+                  <ErrorBoundary>
+                    <RepositoriesPage />
+                  </ErrorBoundary>
+                }
+              />
+              <Route
+                path="/404ErrorPage"
+                element={
+                  <NotFoundPage>
+                    <RepositoriesPage />
+                  </NotFoundPage>
+                }
+              />
+            </Routes>
+          </div>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </Router>
+  );
 }
-
-export default App
+export default App;
