@@ -1,72 +1,79 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
-body{
+body {
   background-color: #fafafa;
 }
 .custom-list {
   list-style-type: decimal;
 }
-.h-screen{
-  height:80vh;
+.h-screen {
+  height: 80vh;
 }
-.h-max{
-  height:50vh
+.h-max {
+  height: 50vh;
 }
-.repo-top{
-  margin-top:2rem;
+.mod-f {
+  -webkit-justify-content: center !important;
 }
-.mod-f{
-  -webkit-justify-content:center!important;
-}
-.header{
+.header {
+  font-size: .8rem;
   border-radius: 0px;
   background: #fdfdfd;
-  box-shadow:  1px 2px 12px #dcdcdc,
-               -6px -6px 12px #ffffff;
+  box-shadow: 1px 2px 12px #dcdcdc, -6px -6px 12px #ffffff;
 }
-.bgcolor{
+.bgcolor {
   background-color: #fafafa;
 }
-.create-btn{
+.create-btn {
   border: none;
- position: relative;
- overflow: hidden;
- z-index: 1;
-
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
 .create-btn::before {
-  content: '';
+  content: "";
   width: 0;
-  height: 3.3em;
+  height: 3.4em;
   border-radius: 30em;
   position: absolute;
   top: 0;
   left: 0;
   background-image: linear-gradient(to right, #060057 0%, #010249 100%);
-  transition: .5s ease;
+  transition: 0.5s ease;
   display: block;
   z-index: -1;
- }
- .create-btn:hover::before {
+}
+.create-btn:hover::before {
   width: 100%;
+}
+.create-btn:hover {
+  color: #ffffff;
+}
+.repo-top {
+  margin-top: 1.4rem;
+}
+.repo-card{
+  height:140px;
+   width:240px;
  }
- .create-btn:hover{
-   color: #ffffff;
+ .repo-name{
+   font-size: .8rem;
  }
- .action-btn{
-   position: relative;
-   background-repeat: no-repeat;
-   cursor: pointer;
+.action-btn {
+  position: relative;
+  background-repeat: no-repeat;
+  cursor: pointer;
   box-sizing: border-box;
   color: #fff;
   border: none;
   transition: all 0.3s ease-in-out;
   z-index: 1;
   overflow: hidden;
- }
- .action-btn::before {
+  font-size: .8rem;
+}
+.action-btn::before {
   content: "";
   background-color: #010249;
   width: 0;
@@ -81,11 +88,10 @@ body{
 .action-btn:hover::before {
   width: 100%;
 }
-.search-width{
-  width:25%;
+.search-width {
+  width: 25%;
 }
 .css-1oxhx2p {
- 
   position: absolute !important;
   top: 50% !important;
   left: 50% !important;
@@ -93,47 +99,40 @@ body{
   align-items: center !important;
   font-family: "Inter", sans-serif;
 }
-.css-1eramkb{
+.css-1eramkb {
   box-sizing: border-box;
   border-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
- 
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
-.input{
-  background: #f7f7f7;
+.input {
+  background-color: #f7f7f7;
   padding: 10px;
   padding-left: 20px;
   height: 50px;
   font-size: 14px;
   border-radius: 20px;
 }
-h1{
+h1 {
   font-family: "Inter", sans-serif;
 }
-@media screen and (max-width: 767px) {
-  
-  .error1{
-    font-size: 4rem;
-  }
-  .error2{
-    font-size: 2.25rem;
-  }
- 
-  .repo-info{
-    font-size: .9rem;
-  }
 
+
+
+@media screen and (max-width: 767px) {
+    .repo-info {
+    font-size: 0.9rem;
+  }
 }
 @media screen and (min-width: 768px) and (max-width: 1023px) {
- 
   .name {
     font-size: 1.1rem;
   }
-    .button{
+  .button {
     font-size: 0.7rem;
   }
 
-  .links{
+  .links {
     font-size: 1rem;
     text-align: center;
     text-decoration: underline;

@@ -15,7 +15,6 @@ Check out the Live Demo [here](https://github-web-app-7p78.vercel.app/)
 - GitHub API
 
 
-
 ## Features
 
 - GitHub Repository List: View all of my GitHub repositories with pagination enabled. 

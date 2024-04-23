@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 
-const CreateModal = ({ isOpen, onClose }) => {
+const CreateModal = ({ isOpen, onClose, onCreate }) => {
   const [newRepoName, setNewRepoName] = useState("");
   const [createdRepo, setCreatedRepo] = useState(null);
   const [value, setValue] = React.useState("public");
@@ -27,6 +27,8 @@ const CreateModal = ({ isOpen, onClose }) => {
       createdAt: new Date().toLocaleString(),
     };
     setCreatedRepo(newRepo);
+       // Call onCreate callback with new repository data
+       onCreate(newRepo);
     onClose();
   };
 
@@ -103,6 +105,7 @@ const CreateModal = ({ isOpen, onClose }) => {
 CreateModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
+  onCreate:PropTypes.func.isRequired
 };
 
 export default CreateModal;
