@@ -31,58 +31,72 @@ const CreateModal = ({ isOpen, onClose }) => {
   };
 
   return (
-    <Modal  isOpen={isOpen} onClose={onClose} motionPreset="slideInBottom">
-      <ModalOverlay bg="rgba(0,0,0,0.4)" />
-      <ModalContent
-        bg="white"
-        mx="auto"
-        // p={6}
-        className="flex justify-center px-8 py-10 modal-container"
+    <Modal
+  isOpen={isOpen}
+  onClose={onClose}
+  motionPreset="slideInBottom"
+  aria-labelledby="modal-title"
+  aria-describedby="modal-description"
+  aria-modal="true"
+>
+  <ModalOverlay bg="rgba(0,0,0,0.4)" />
+  <ModalContent
+    bg="white"
+    mx="auto"
+    className="flex justify-center px-10 py-8 max-w-lg lg:w-2/5 w-full md:max-w-xl lg:max-w-3xl xl:max-w-4xl modal-container"
+  >
+    <ModalHeader
+      className="uppercase text-2xl font-bold flex align-center justify-center"
+      id="modal-title"
+    >
+      Create New Repository
+    </ModalHeader>
+
+    <ModalBody className="py-8" id="modal-description">
+      <FormControl>
+        <FormLabel className="font-bold py-3 text-md uppercase" htmlFor="repo-name">
+          Name
+        </FormLabel>
+        <Input
+          id="repo-name"
+          placeholder="Enter repository name"
+          value={newRepoName}
+          onChange={(event) => setNewRepoName(event.target.value)}
+          className="input w-full"
+        />
+        <FormLabel className="font-bold py-3 text-md uppercase mt-4" htmlFor="repo-description">
+          Description
+        </FormLabel>
+        <Input
+          id="repo-description"
+          placeholder="Description"
+          className="input w-full"
+        />
+      </FormControl>
+      <RadioGroup onChange={setValue} value={value} className="pt-8 pb-4">
+        <Checkbox value="private" pr={10}>Private</Checkbox>
+        <Checkbox value="public">Public</Checkbox>
+      </RadioGroup>
+    </ModalBody>
+
+    <ModalFooter className="mod-f">
+      <Button
+        className="text-white bg-black rounded-lg px-8 py-4 mr-4"
+        onClick={handleNewRepoCreated}
+        disabled={!newRepoName}
       >
-        <ModalHeader className="uppercase text-2xl font-bold flex align-center justify-center ">
-          Create New Repository
-        </ModalHeader>
-
-        <ModalBody className=" py-8">
-          <FormControl>
-            <FormLabel className="font-bold py-3 text-md uppercase" > Name </FormLabel>
-            <Input 
-              placeholder="Enter repository name"
-              value={newRepoName}
-              onChange={(event) => setNewRepoName(event.target.value)}
-              className="input w-full "
-            />
-            <FormLabel className="font-bold py-3 text-md uppercase mt-4" >Description </FormLabel>
-            <Input 
-              placeholder="Description"
-              className="input w-full "
-            />
-          </FormControl>
-          <RadioGroup onChange={setValue} value={value} className="pt-8 pb-4">
-            <Checkbox value="private" pr={10}>Private</Checkbox >
-            <Checkbox value="public" >Public</Checkbox >
-          </RadioGroup>
-          
-        </ModalBody>
-
-        <ModalFooter className="mod-f">
-          <Button
-            className="text-white bg-black rounded-lg px-8 py-4 mr-4"
-            onClick={handleNewRepoCreated}
-            disabled={!newRepoName}
-          >
-            Create
-          </Button>
-          <Button
-            className="text-white bg-black rounded-lg px-8 py-4"
-            onClick={onClose}
-          >
-            Cancel
-          </Button>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
-  );
+        Create
+      </Button>
+      <Button
+        className="text-white bg-black rounded-lg px-8 py-4"
+        onClick={onClose}
+      >
+        Cancel
+      </Button>
+    </ModalFooter>
+  </ModalContent>
+</Modal>
+  )
 };
 
 // PropTypes for the component
