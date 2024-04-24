@@ -6,14 +6,14 @@ import { SearchIcon } from "@chakra-ui/icons";
 import { fetchRepositories } from "../Api/fetchGithubRepo";
 import PropTypes from "prop-types";
 import "../index.css";
-// import CreateModal from "../Components/Modal";
 
 const RepositoriesPage = ({ username }) => {
   const [repositories, setRepositories] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [filterLanguage, setFilteredLanguage] = useState(0)
   const [loading, setLoading] = useState(false);
-  const repoPerPage = 5;
+  const repoPerPage = 6;
 
   useEffect(() => {
     const getRepositories = async () => {
@@ -29,10 +29,15 @@ const RepositoriesPage = ({ username }) => {
     getRepositories();
   }, [username]);
 
-  const filteredRepos = repositories.filter((repo) =>
-    repo.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-  console.log(filteredRepos);
+  const filteredRepos = repositories.filter((repo) => {
+    return repo.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      (filterLanguage === "" || repo.language === filterLanguage);
+  });
+
+  // handle filter
+  const handleFilterChange = (e) => {
+    setFilteredLanguage(e.target.value);
+  };
 
   const indexOfLastRepo = currentPage * repoPerPage;
   const indexOfFirstRepo = indexOfLastRepo - repoPerPage;
@@ -66,22 +71,41 @@ const RepositoriesPage = ({ username }) => {
 
   return (
     <div className="font-inter mt-6">
-      <InputGroup mt={2} className="flex items-center justify-center">
-        <div pointerEvents="none" className="py-4">
-          <SearchIcon color="gray.900" h={12} w={12} />
+      <div className="search-filter pt-2 flex items-center justify-center mx-auto max-w-screen-lg">
+        <InputGroup >
+          <div pointerEvents="none" className="py-4">
+            <SearchIcon color="gray.900" h={12} w={12} />
+          </div>
+          <Input
+            placeholder="Search Repositories.."
+            value={searchTerm}
+            onChange={handleSearch}
+            id="main-content"
+            className="border-b-2 w-2xl bgcolor border-black focus:outline-none focus:border-gray-500 py-2 pl-6"
+            _placeholder={{ fontSize: "14px" }}
+          />
+        </InputGroup>
+         {/* filtering */}
+        <div className="pt-1 pl-3">
+          <select onClick={handleFilterChange} className="filter-box pl-1">
+            <option value="">Filter</option>
+            <option value="">All Language</option>
+            <option value="JavaScript">Javascript</option>
+            <option value="C#">C#</option>
+            <option value="php">PHP</option>
+            <option value="html">HTML</option>
+          </select>
         </div>
-        <Input
-          placeholder="Search Repositories.."
-          value={searchTerm}
-          onChange={handleSearch}
-          className="border-b-2 w-2xl bgcolor border-black focus:outline-none focus:border-gray-500 py-2 pl-6"
-          _placeholder={{ fontSize: "14px" }}
-        />
-      </InputGroup>
+      </div>
+     
 
       {filteredRepos.length > 0 ? (
         <div>
-          <div className="repo-top mx-auto max-w-screen-lg grid grid-cols-1 gap-6 md:flex md:flex-wrap md:justify-center md:gap-6 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4">
+          <div
+            role="list"
+            aria-label="Repository List"
+            className="repo-list mx-auto py-8 max-w-screen-lg grid grid-cols-1 gap-6 md:flex md:flex-wrap md:justify-center md:gap-6 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4"
+          >
             {currentRepos.map((repo) => (
               <div
                 key={repo.id}
@@ -95,17 +119,19 @@ const RepositoriesPage = ({ username }) => {
           </div>
           <div>
             {filteredRepos.length > repoPerPage && (
-              <div className="flex justify-center item-center mt-4 mb-4">
+              <div className="flex justify-center item-center " aria-label="Pagination">
                 <Button
-                  className="action-btn bg-black text-white px-2 py-2 rounded-full  mr-2 w-1/6 hover:bg-gray-900 font"
-                  onClick={previousPage}
+                  className="action-btn bg-black text-white px-2 py-2 rounded-full  mr-2 w-1/6 hover:bg-gray-900 focus:bg-transparent focus:text-black font"
+                            onClick={previousPage}
+                  aria-label="Previous Page"
                   mt={4}
                 >
                   Prev
                 </Button>
                 <Button
-                  className="action-btn bg-black text-white px-2 py-1 rounded-full  w-1/6 hover:bg-gray-900"
+                  className="action-btn bg-black text-white px-2 py-2 rounded-full  mr-2 w-1/6 hover:bg-gray-900 focus:bg-transparent focus:text-black font"
                   onClick={nextPage}
+                  aria-label="Next Page"
                   mt={4}
                 >
                   Next
@@ -116,7 +142,7 @@ const RepositoriesPage = ({ username }) => {
         </div>
       ) : (
         <div className="flex flex-col justify-center items-center h-max mt-9">
-          <p className="text-3xl mb-4">No repositories found.</p>
+          <p className="text-2xl mb-4">No repositories found.</p>
           <p className="text-md">
             You can try checking your internet connection...
           </p>
