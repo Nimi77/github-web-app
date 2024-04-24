@@ -86,7 +86,7 @@ const RepositoriesPage = ({ username }) => {
           />
         </InputGroup>
          {/* filtering */}
-        <div className="pt-1 pl-3">
+        <div className="pt-1 pl-3 filter">
           <select onClick={handleFilterChange} className="filter-box pl-1">
             <option value="">Filter</option>
             <option value="">All Language</option>

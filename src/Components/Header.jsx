@@ -19,18 +19,18 @@ const Header = () => {
       <a href="#main-content" className="sr-only focus:not-sr-only">
         Skip to content
       </a>
-      <h2 className="p-4 flex items-flex-start text-xl">
+      <h2 className="px-4 py-2 flex items-flex-start text-xl hover-bg" >
         <Link to="/">Repositories</Link>
       </h2>
       <div className="flex">
         <ul className="testing-error-boundary flex justify-between items-center mx-8 cursor-pointer">
           {/* tests the error boundary page */}
           <li className="mr-6">
-            <Link to="/error-boundary">Test</Link>
+            <Link to="/error-boundary" className="hover-bg px-4 py-2">Test</Link>
           </li>
           {/*  tests the 404 page boundary */}
           <li>
-            <Link to="/404ErrorPage">Activities</Link>
+            <Link to="/404ErrorPage" className="hover-bg px-4 py-2">Activities</Link>
           </li>
         </ul>
         <button

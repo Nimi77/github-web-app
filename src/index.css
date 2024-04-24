@@ -16,8 +16,9 @@ body {
 }
 .mod-f {
   -webkit-justify-content: center !important;
+  justify-content:center;
 }
-h1 {
+h1, h2 {
   font-family: "Inter", sans-serif;
 }
 .header {
@@ -25,6 +26,10 @@ h1 {
   border-radius: 0px;
   background: #fdfdfd;
   box-shadow: 1px 2px 12px #dcdcdc, -6px -6px 12px #ffffff;
+}
+.hover-bg:hover{
+  background-color: #e8e8e8;
+  border-radius: 50px;
 }
 .bgcolor {
   background-color: #fafafa;
@@ -46,7 +51,7 @@ div > .create-btn-sm{
   position: absolute;
   top: 0;
   left: 0;
-  background-image: linear-gradient(to right, #060057 0%, #010249 100%);
+  background-image: linear-gradient(to right, #131313 0%, #242424 100%);
   transition: 0.5s ease;
   display: block;
   z-index: -1;
@@ -92,7 +97,7 @@ select::-ms-expand {
 }
 .action-btn::before {
   content: "";
-  background-color: #010249;
+  background-color: #242424;
   width: 0;
   height: 100%;
   position: absolute;
@@ -133,7 +138,6 @@ select::-ms-expand {
   font-size: 14px;
   border-radius: 20px;
 }
-
 @media screen and (max-width: 767px) {
   .header{
     padding:12px;
@@ -195,10 +199,9 @@ select::-ms-expand {
     font-size: 14px;
   }
 }
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-  
-  .button {
-    font-size: 0.7rem;
+@media screen and (max-width: 768px) {
+  .chakra-input{
+    width:164px;
   }
 
 }

@@ -27,6 +27,7 @@ This Web App was created using GithuhAPI. This application allows you to view al
 - Accessibility Techniques: Implement accessibility techniques for a more inclusive user experience.
  
 ## Problem Encountered and Lessons Learnt 
+
 I literally thought I won't be able to complete this project cause of light issues and I struggled to charge everyday also I wasn't really familiar with using Tailwind CSS and Chakra UI and I was going planning to give up but then I took a step back and wondered why am not attempting to learn it yet concluded that it's hard. I had the mindset that I'll never get to know how to style the website with the required specification within the given period of time.
 
 I reached out to one of my fellow mate in Altschool and explained how I am finding it hard to style with Chakra UI then he explained that he also just learnt how to style with tailwind CSS and Chakra UI within the time limit we were given so I decided I should give it try too and to my surprise it I was able to also do some styling even though the web app is pretty simple, I didn't add too many colors cause I was more focused on the functionality. 
