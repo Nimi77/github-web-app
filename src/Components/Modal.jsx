@@ -15,30 +15,39 @@ import {
   Checkbox,
 } from "@chakra-ui/react";
 import PropTypes from "prop-types";
+import "../index.css";
 
 const CreateModal = ({ isOpen, onClose, onCreate }) => {
-  const [newRepoName, setNewRepoName] = useState("");
-  const [createdRepo, setCreatedRepo] = useState(null);
+  const [newRepoName, setNewRepoName] = useState(" ");
+  const [repoDescription, setRepoDescription] = useState(" ");
+  const [error, setError] = useState(" ");
   const [value, setValue] = React.useState("public");
 
-  const handleNewRepoCreated = () => {
-    const newRepo = {
-      name: newRepoName,
-      createdAt: new Date().toLocaleString(),
-    };
-    setCreatedRepo(newRepo);
-    // Call onCreate callback with new repository data
-    onCreate(newRepo);
+  const handleCreate = () => {
+    //validation
+    if(!newRepoName.trim()){
+      setError('Please enter a repository.');
+      return;
+    }
+
+    onCreate= () => ({name: newRepoName, description: repoDescription});
+    console.log("new repo created");
+
+    //clears form
+    setNewRepoName('')
+    setRepoDescription('');
+    setError('');
+
     onClose();
   };
-
+ 
   return (
     <Modal
       isOpen={isOpen}
       onClose={onClose}
       motionPreset="slideInBottom"
       aria-labelledby="modal-title"
-      aria-describedby="modal-description"
+      aria-describedby="modal-info"
       aria-modal="true" 
     >
       <ModalOverlay bg="rgba(0,0,0,0.8)" />
@@ -54,7 +63,7 @@ const CreateModal = ({ isOpen, onClose, onCreate }) => {
           Create New Repository
         </ModalHeader>
 
-        <ModalBody className="pt-6 pb-4" id="modal-description">
+        <ModalBody className="pt-6 pb-4" id="modal-info">
           <FormControl>
             <FormLabel
               className="font-bold py-3 text-md uppercase new-repo-name"
@@ -64,7 +73,7 @@ const CreateModal = ({ isOpen, onClose, onCreate }) => {
             </FormLabel>
             <Input
               id="repo-name"
-              placeholder="Enter repository name"
+              placeholder="Repository Name"
               value={newRepoName}
               onChange={(event) => setNewRepoName(event.target.value)}
               className="input w-full"
@@ -78,7 +87,9 @@ const CreateModal = ({ isOpen, onClose, onCreate }) => {
             </FormLabel>
             <Input
               id="repo-description"
-              placeholder="Description"
+              placeholder="Repository Description"
+              value={repoDescription}
+              onChange={(event) => setRepoDescription(event.target.value)}
               className="input w-full"
               _placeholder={{ fontSize: "13px" }}
             />
@@ -92,10 +103,10 @@ const CreateModal = ({ isOpen, onClose, onCreate }) => {
         </ModalBody>
 
         <ModalFooter className="mod-f">
+          {error && <p className="error text-sm ">{error}</p>}
           <Button
             className="action-btn text-white bg-black rounded-lg px-5 py-3 mr-4"
-            onClick={handleNewRepoCreated}
-            disabled={!newRepoName}
+            onClick={handleCreate}
           >
             Create
           </Button>

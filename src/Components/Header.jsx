@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import CreateModal from "./Modal";
 import { Link } from "react-router-dom";
+import { AnalyticsOutlined } from "@mui/icons-material";
 import "../index.css";
 
 const Header = () => {
@@ -30,7 +31,7 @@ const Header = () => {
           </li>
           {/*  tests the 404 page boundary */}
           <li>
-            <Link to="/404ErrorPage" className="hover-bg px-4 py-2">Activities</Link>
+            <Link to="/404ErrorPage" className="hover-bg px-4 py-2"><AnalyticsOutlined className="icon-color"/> Activities</Link>
           </li>
         </ul>
         <button

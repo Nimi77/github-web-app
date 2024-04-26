@@ -5,13 +5,15 @@ import { Input, Button, InputGroup } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import { fetchRepositories } from "../Api/fetchGithubRepo";
 import PropTypes from "prop-types";
+import CreateModal from "../Components/Modal";
+
 import "../index.css";
 
 const RepositoriesPage = ({ username }) => {
   const [repositories, setRepositories] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [filterLanguage, setFilteredLanguage] = useState(0)
+  const [filterLanguage, setFilteredLanguage] = useState("")
   const [loading, setLoading] = useState(false);
   const repoPerPage = 6;
 
@@ -63,14 +65,14 @@ const RepositoriesPage = ({ username }) => {
   };
 
   // Callback function to handle creation of new repository
-  // const handleCreateRepository = (newRepo) => {
-  //   setRepositories([...repositories, newRepo]);
-  // };
+  const handleNewRepo= (newRepo) => {
+    setRepositories([...repositories, newRepo]);
+  };
 
   if (loading) return <div>Loading..</div>;
 
   return (
-    <div className="font-inter mt-6">
+    <div className="font-inter my-6">
       <div className="search-filter pt-2 flex items-center justify-center mx-auto max-w-screen-lg">
         <InputGroup >
           <div pointerEvents="none" className="py-4">
@@ -106,6 +108,7 @@ const RepositoriesPage = ({ username }) => {
             aria-label="Repository List"
             className="repo-list mx-auto py-8 max-w-screen-lg grid grid-cols-1 gap-6 md:flex md:flex-wrap md:justify-center md:gap-6 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4"
           >
+            <CreateModal onCreate={handleNewRepo} />
             {currentRepos.map((repo) => (
               <div
                 key={repo.id}

@@ -24,12 +24,12 @@ h1, h2 {
 .header {
   font-size: .9rem;
   border-radius: 0px;
-  background: #fdfdfd;
+  background: #141414;
+  color:#fff;
   box-shadow: 1px 2px 12px #dcdcdc, -6px -6px 12px #ffffff;
 }
 .hover-bg:hover{
-  background-color: #e8e8e8;
-  border-radius: 50px;
+  color: #e8e8e8;
 }
 .bgcolor {
   background-color: #fafafa;
@@ -43,24 +43,9 @@ div > .create-btn-sm{
   overflow: hidden;
   z-index: 1;
 }
-.create-btn::before {
-  content: "";
-  width: 0;
-  height: 3.4em;
-  border-radius: 30em;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-image: linear-gradient(to right, #131313 0%, #242424 100%);
-  transition: 0.5s ease;
-  display: block;
-  z-index: -1;
-}
-.create-btn:hover::before {
-  width: 100%;
-}
 .create-btn:hover {
   color: #ffffff;
+  background-color: transparent;
 }
 .search-filter{
   max-width: 80%;
@@ -138,6 +123,10 @@ select::-ms-expand {
   font-size: 14px;
   border-radius: 20px;
 }
+.error{
+  color:red;
+  margin-right:12px;
+}
 @media screen and (max-width: 767px) {
   .header{
     padding:12px;
@@ -149,10 +138,12 @@ select::-ms-expand {
   div > .create-btn-sm{
     display: inline-flex;
     border:2px solid #e8e8e8;
+    color:#fff;
   }
   div > .create-btn-sm:hover{
     background-color: #fafafa;
     transition: all .5s;
+    color:#121212;
   }
   .repo-list{
     margin-left: 1rem;
@@ -199,9 +190,4 @@ select::-ms-expand {
     font-size: 14px;
   }
 }
-@media screen and (max-width: 768px) {
-  .chakra-input{
-    width:164px;
-  }
 
-}
