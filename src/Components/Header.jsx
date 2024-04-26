@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import CreateModal from "./Modal";
 import { Link } from "react-router-dom";
 import { AnalyticsOutlined } from "@mui/icons-material";
+import GithubIcon from "@mui/icons-material/Github";
+import BugReportIcon from "@mui/icons-material/BugReport";
 import "../index.css";
 
 const Header = () => {
@@ -21,17 +23,17 @@ const Header = () => {
         Skip to content
       </a>
       <h2 className="px-4 py-2 flex items-flex-start text-xl hover-bg" >
-        <Link to="/">Repositories</Link>
+        <Link to="/"><GithubIcon className="h-icon" /> Repositories</Link>
       </h2>
       <div className="flex">
         <ul className="testing-error-boundary flex justify-between items-center mx-8 cursor-pointer">
           {/* tests the error boundary page */}
-          <li className="mr-6">
-            <Link to="/error-boundary" className="hover-bg px-4 py-2">Test</Link>
+          <li className="mr-6 test">
+            <Link to="/error-boundary" className="hover-bg px-4 py-2"><BugReportIcon className="h-icon"/> Test </Link>
           </li>
           {/*  tests the 404 page boundary */}
           <li>
-            <Link to="/404ErrorPage" className="hover-bg px-4 py-2"><AnalyticsOutlined className="icon-color"/> Activities</Link>
+            <Link to="/404ErrorPage" className="hover-bg px-4 py-2"><AnalyticsOutlined className="h-icon" /> Activities </Link>
           </li>
         </ul>
         <button
@@ -42,7 +44,7 @@ const Header = () => {
         </button>
         {/* This button should appear on small screen */}
         <button
-          className="create-btn-sm inline-flex items-center rounded-full px-6 py-2 h-140 font-semibold text-black  "
+          className="create-btn-sm inline-flex items-center rounded-full px-6 py-2 h-140 font-semibold text-black "
           onClick={handleNewRepo}
         >
           Create

@@ -1,9 +1,10 @@
 # GitHub Repositories Portfolio Web App
 
-This Web App was created using GithuhAPI. This application allows you to view all of my GitHub repositories, with pagination, search and filter functionality. You can also view detailed information for each repository.
+This Web App is created using GithubAPI. This application allows you to view all of my GitHub repositories, with pagination and search functionality. You can also view detailed information for each repository.
+
 ## Technologies Used
 
-- React
+- ReactJs
 - Chakra UI
 - Tailwind CSS
 - GitHub API
@@ -12,11 +13,11 @@ This Web App was created using GithuhAPI. This application allows you to view al
 
 - GitHub Repository List: View all of my GitHub repositories with pagination enabled. 
 
-- Search and Filter: Easily search for repositories to find what you're looking for and filter repositories base on the language required.
+- Search and Filter: Easily search for repositories to find what you're looking for.
 
 - Detailed Repository View: Click on a repository to view detailed information.
 
-- Nested Routes: Utilize nested routes for navigation within the application.
+- Nested Routes: I utilized nested routes for navigation within the application.
 
 - Error Boundary: The error boundary component catches errors in the RepositoriesPage. 
 
@@ -25,12 +26,18 @@ This Web App was created using GithuhAPI. This application allows you to view al
 - Good Layout and UI: Ensured a visually appealing and user-friendly design.
 
 - Accessibility Techniques: Implement accessibility techniques for a more inclusive user experience.
+
+- Responsiveness: The web app is responsive on various devices.
  
 ## Problem Encountered and Lessons Learnt 
 
-I literally thought I won't be able to complete this project cause of light issues and I struggled to charge everyday also I wasn't really familiar with using Tailwind CSS and Chakra UI and I was going planning to give up but then I took a step back and wondered why am not attempting to learn it yet concluded that it's hard. I had the mindset that I'll never get to know how to style the website with the required specification within the given period of time.
+- At first I struggled with using Tailwind CSS and Chakra UI, but after using a day to learn the basics and reading some documentations on I was able to style this web app.
 
-I reached out to one of my fellow mate in Altschool and explained how I am finding it hard to style with Chakra UI then he explained that he also just learnt how to style with tailwind CSS and Chakra UI within the time limit we were given so I decided I should give it try too and to my surprise it I was able to also do some styling even though the web app is pretty simple, I didn't add too many colors cause I was more focused on the functionality. 
+- I learnt that nothing is Impossible if I can set my mind on it. 
+
+- I tried to add a filter icon, more like a dropdown button to filter each repository by it language (i.e HTML, Javascript) but it didn't work out as it was intended to.
+
+- I created a button to create a new repository but after the modal pop up and the new repo details is inputed the new repo is not appending on the repositories list. I tried to debug what was wrong what I still haven't figure it out.
 
 ## Note
 

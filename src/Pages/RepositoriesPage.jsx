@@ -4,16 +4,14 @@ import { Link } from "react-router-dom";
 import { Input, Button, InputGroup } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import { fetchRepositories } from "../Api/fetchGithubRepo";
-import PropTypes from "prop-types";
 import CreateModal from "../Components/Modal";
-
+import PropTypes from "prop-types";
 import "../index.css";
 
 const RepositoriesPage = ({ username }) => {
   const [repositories, setRepositories] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [filterLanguage, setFilteredLanguage] = useState("")
   const [loading, setLoading] = useState(false);
   const repoPerPage = 6;
 
@@ -23,6 +21,7 @@ const RepositoriesPage = ({ username }) => {
       try {
         const data = await fetchRepositories(username);
         setRepositories(data);
+        console.log(data);
       } catch (error) {
         console.log("Error fetching repositories", error);
       }
@@ -32,19 +31,13 @@ const RepositoriesPage = ({ username }) => {
   }, [username]);
 
   const filteredRepos = repositories.filter((repo) => {
-    return repo.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      (filterLanguage === "" || repo.language === filterLanguage);
+    return repo.name.toLowerCase().includes(searchTerm.toLowerCase());
   });
-
-  // handle filter
-  const handleFilterChange = (e) => {
-    setFilteredLanguage(e.target.value);
-  };
+  console.log(filteredRepos);
 
   const indexOfLastRepo = currentPage * repoPerPage;
   const indexOfFirstRepo = indexOfLastRepo - repoPerPage;
   const currentRepos = filteredRepos.slice(indexOfFirstRepo, indexOfLastRepo);
-  console.log(currentRepos);
 
   //searchTerm
   const handleSearch = (event) => {
@@ -65,50 +58,38 @@ const RepositoriesPage = ({ username }) => {
   };
 
   // Callback function to handle creation of new repository
-  const handleNewRepo= (newRepo) => {
+ const handleNewRepo = (newRepo) => {
     setRepositories([...repositories, newRepo]);
   };
+
 
   if (loading) return <div>Loading..</div>;
 
   return (
     <div className="font-inter my-6">
-      <div className="search-filter pt-2 flex items-center justify-center mx-auto max-w-screen-lg">
-        <InputGroup >
-          <div pointerEvents="none" className="py-4">
-            <SearchIcon color="gray.900" h={12} w={12} />
-          </div>
-          <Input
-            placeholder="Search Repositories.."
-            value={searchTerm}
-            onChange={handleSearch}
-            id="main-content"
-            className="border-b-2 w-2xl bgcolor border-black focus:outline-none focus:border-gray-500 py-2 pl-6"
-            _placeholder={{ fontSize: "14px" }}
-          />
-        </InputGroup>
-         {/* filtering */}
-        <div className="pt-1 pl-3 filter">
-          <select onClick={handleFilterChange} className="filter-box pl-1">
-            <option value="">Filter</option>
-            <option value="">All Language</option>
-            <option value="JavaScript">Javascript</option>
-            <option value="C#">C#</option>
-            <option value="php">PHP</option>
-            <option value="html">HTML</option>
-          </select>
+      <InputGroup className="g-input pt-2 flex items-center justify-center mx-auto max-w-screen-lg">
+        <div pointerEvents="none" className="py-4">
+          <SearchIcon color="gray.900" h={12} w={12} />
         </div>
-      </div>
-     
+        <Input
+          placeholder="Search Repositories.."
+          value={searchTerm}
+          onChange={handleSearch}
+          id="main-content"
+          className="border-b-2 w-2xl bgcolor border-black focus:outline-none focus:border-gray-500 py-2 pl-6"
+          _placeholder={{ fontSize: "14px" }}
+        />
+        {/* add filter icon */}
+      </InputGroup>
 
       {filteredRepos.length > 0 ? (
         <div>
+          <CreateModal onCreate={handleNewRepo}/>
           <div
             role="list"
             aria-label="Repository List"
             className="repo-list mx-auto py-8 max-w-screen-lg grid grid-cols-1 gap-6 md:flex md:flex-wrap md:justify-center md:gap-6 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4"
           >
-            <CreateModal onCreate={handleNewRepo} />
             {currentRepos.map((repo) => (
               <div
                 key={repo.id}
@@ -122,17 +103,20 @@ const RepositoriesPage = ({ username }) => {
           </div>
           <div>
             {filteredRepos.length > repoPerPage && (
-              <div className="flex justify-center item-center " aria-label="Pagination">
+              <div
+                className="flex justify-center item-center "
+                aria-label="Pagination"
+              >
                 <Button
-                  className="action-btn bg-black text-white px-2 py-2 rounded-full  mr-2 w-1/6 hover:bg-gray-900 focus:bg-transparent focus:text-black font"
-                            onClick={previousPage}
+                  className="action-btn bg-black text-white px-2 py-2 rounded-full  mr-2 w-1/6 hover:bg-gray-900  hover:text-white focus:bg-transparent focus:text-black font"
+                  onClick={previousPage}
                   aria-label="Previous Page"
                   mt={4}
                 >
                   Prev
                 </Button>
                 <Button
-                  className="action-btn bg-black text-white px-2 py-2 rounded-full  mr-2 w-1/6 hover:bg-gray-900 focus:bg-transparent focus:text-black font"
+                  className="action-btn bg-black text-white px-2 py-2 rounded-full  mr-2 w-1/6 hover:bg-gray-900 hover:text-white focus:bg-transparent focus:text-black font"
                   onClick={nextPage}
                   aria-label="Next Page"
                   mt={4}
