@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import CreateModal from "./Modal";
 import { Link } from "react-router-dom";
 import { AnalyticsOutlined } from "@mui/icons-material";
-import GithubIcon from "@mui/icons-material/Github";
+import GitHubIcon from '@mui/icons-material/GitHub';
 import BugReportIcon from "@mui/icons-material/BugReport";
 import "../index.css";
 
@@ -23,7 +23,7 @@ const Header = () => {
         Skip to content
       </a>
       <h2 className="px-4 py-2 flex items-flex-start text-xl hover-bg" >
-        <Link to="/"><GithubIcon className="h-icon" /> Repositories</Link>
+        <Link to="/"><GitHubIcon className="h-icon" /> Repositories</Link>
       </h2>
       <div className="flex">
         <ul className="testing-error-boundary flex justify-between items-center mx-8 cursor-pointer">

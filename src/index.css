@@ -16,6 +16,7 @@ body {
 }
 .mod-f {
   -webkit-justify-content: center !important;
+  justify-content: center !important;
 }
 h1,
 h2 {
