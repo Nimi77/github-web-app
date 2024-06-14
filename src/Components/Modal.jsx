@@ -17,7 +17,7 @@ import {
 import PropTypes from "prop-types";
 import "../index.css";
 
-const CreateModal = ({ isOpen, onClose, onCreate }) => {
+const CreateModal = () => {
   const [newRepoName, setNewRepoName] = useState(" ");
   const [repoDescription, setRepoDescription] = useState(" ");
   const [error, setError] = useState(" ");
