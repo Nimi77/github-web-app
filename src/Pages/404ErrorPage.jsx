@@ -1,6 +1,3 @@
-// eslint-disable-next-line no-unused-vars
-import React from 'react';
-
 const NotFoundPage = () => {
   return (
     <div className='font-inter flex flex-col justify-center align-center items-center h-screen mt-auto'>
