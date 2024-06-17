@@ -1,10 +1,9 @@
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 2450fee0cf4be255a44de8ff7586cd844ee85cf1
 const NotFoundPage = () => {
- 
+  return (
+    <div className="font-inter flex flex-col justify-center align-center items-center mx-auto h-[80vh]">
+      <h1 className="mb-4 text-4xl ">404 - Not Found</h1>
+      <p>The page you are looking for does not exist.</p>
+    </div>
   );
 };
 
