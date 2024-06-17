@@ -1,4 +1,4 @@
-# GitHub Repositories Portfolio Web App
+# GitHub Repositories Web App
 
 This Web App is created using GithubAPI. This application allows you to view all of my GitHub repositories, with pagination and search functionality. You can also view detailed information for each repository.
 
