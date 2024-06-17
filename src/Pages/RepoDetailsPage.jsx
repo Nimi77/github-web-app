@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-unused-vars
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Octokit } from "@octokit/core";
 
@@ -21,8 +20,7 @@ const RepoDetailsPage = () => {
           }
         );
         setRepository(response.data);
-        console.log(response.data);
-      } catch (error) {
+         } catch (error) {
         console.error("Error fetching repository details:", error);
       }
       setLoading(false);

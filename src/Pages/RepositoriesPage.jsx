@@ -75,7 +75,6 @@ const RepositoriesPage = ({ username }) => {
           placeholder="Search Repositories.."
           value={searchTerm}
           onChange={handleSearch}
-          id="main-content"
           className="border-b-2 w-2xl bgcolor border-black focus:outline-none focus:border-gray-500 py-2 pl-6"
           _placeholder={{ fontSize: "14px" }}
         />
